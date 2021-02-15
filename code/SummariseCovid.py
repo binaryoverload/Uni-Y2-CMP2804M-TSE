@@ -2,7 +2,7 @@ import datetime
 
 covidDates = dict()
 
-with open("covid-data.csv", "r") as openFile:
+with open("../data/covid-data.csv", "r") as openFile:
     next(openFile) # Skip the header
     for row in openFile:
         dateField = row.split(",")[0].split("/")
