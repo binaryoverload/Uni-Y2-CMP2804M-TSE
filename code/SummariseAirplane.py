@@ -60,6 +60,8 @@ ax.grid(True)
 # rotates and right aligns the x labels, and moves the bottom of the
 # axes up to make room for them
 fig.autofmt_xdate()
-fig.canvas.set_window_title('UK Destination Flight Count March - Oct 2020')
+fig.canvas.set_window_title('Incoming UK Flight Count March - Oct 2020')
 
+
+plt.title('Incoming UK Flight Count March - Oct 2020')
 plt.show()
