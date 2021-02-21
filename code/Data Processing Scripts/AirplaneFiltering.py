@@ -8,7 +8,7 @@ with open('flight-data.csv') as csv_file:
 
     headerRow = next(myFile)
 
-    with open('../data/flight-data-filtered.csv', mode='w', newline='') as FilteredFile:
+    with open('../../data/flight-data-filtered.csv', mode='w', newline='') as FilteredFile:
         record_writer = csv.writer(FilteredFile)
         record_writer.writerow(headerRow)
         for row in myFile:

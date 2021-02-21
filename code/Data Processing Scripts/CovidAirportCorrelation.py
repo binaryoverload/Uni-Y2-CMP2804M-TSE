@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime
+import time
 
 dateFlightCount = dict()
 covidCount = dict()
@@ -32,7 +33,7 @@ fig, ax = plt.subplots()
 
 for key in dateFlightCount.keys():
     #mergedData.append([dateFlightCount[key], covidCount[key]])
-    plt.plot(dateFlightCount[key], covidCount[key], "bx")
+    plt.plot(covidCount[key], dateFlightCount[key], "bx")
 
 #plt.plot(mergedData)
 
@@ -41,14 +42,14 @@ ax.format_xdata = lambda x: int(x)
 ax.format_ydata = lambda y: int(y)  # format the price.
 ax.grid(True)
 
-ax.set_ylabel('Flights')
-ax.set_xlabel('COVID-19 Cases')
+ax.set_ylabel('COVID-19 Cases')
+ax.set_xlabel('Flights')
 
 # rotates and right aligns the x labels, and moves the bottom of the
 # axes up to make room for them
 fig.autofmt_xdate()
 
-title = "Numbers of flights per day plotted against daily COVID-19 cases"
+title = "Numbers of daily COVID-19 cases plotted against flights per day"
 
 fig.canvas.set_window_title(title)
 
