@@ -22,6 +22,8 @@
     <p id="date"></p>
 
     <script>
+        let covidMap = {};
+
         (async function() {
             window.mymap = L.map('mapid').setView([54.898, -5.416], 6);
             L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -40,20 +42,24 @@
                 .then(data => data.text())
                 .then(body => body.split("\n").map(line => line.split(/,(?![^,]+")/g)))
 
-            let covidMap = covidData.filter(line => line[0] === "31/10/2020").map(line => [line[2], line[4]]).reduce((map, line) => {
+            covidMap = window.covidData.filter(line => line[0] === getSliderDateString(document.getElementById("slider").value)).map(line => [line[2], line[4]]).reduce((map, line) => {
                 map[line[0]] = +line[1]
                 return map;
             }, {})
 
-            L.geoJSON(mapData).bindPopup(function(layer) {
-                return counties[layer.feature.properties.code] + " (" + layer.feature.properties.code + ") - " + covidMap[layer.feature.properties.code];
+
+            L.geoJSON(mapData).bindTooltip(function(layer) {
+                return counties[layer.feature.properties.code] + " (" + layer.feature.properties.code + ") - " + (covidMap[layer.feature.properties.code] || 0);
             }).addTo(window.mymap);
 
-            setStyles("31/10/2020")
+            dateUpdate(getSliderDateString(document.getElementById("slider").value))
 
         })()
 
-        document.getElementById("slider").addEventListener("input", slider)
+        document.getElementById("slider").addEventListener("input", function(e) {
+            let dateString = getSliderDateString(e.target.value)
+            dateUpdate(dateString)
+        })
 
         function getSliderDate(value) {
             let date = new Date(2020, 0, 31)
@@ -61,11 +67,19 @@
             return date
         }
 
-        function slider(e) {
-            let date = getSliderDate(parseInt(e.target.value))
-            let dateString = `${Math.max(date.getDay(), 1).toString().padStart(2, "0")}/${(date.getMonth() + 1).toString().padStart(2, "0")}/${date.getFullYear()}`
+        function dateUpdate(dateString) {
             document.getElementById("date").innerText = dateString
             setStyles(dateString)
+            covidMap = window.covidData.filter(line => line[0] === dateString).map(line => [line[2], line[4]]).reduce((map, line) => {
+                map[line[0]] = +line[1]
+                return map;
+            }, {})
+        }
+
+        function getSliderDateString(value) {
+            let date = getSliderDate(parseInt(value))
+            let dateString = `${Math.max(date.getDay(), 1).toString().padStart(2, "0")}/${(date.getMonth() + 1).toString().padStart(2, "0")}/${date.getFullYear()}`
+            return dateString
         }
 
         function getGradientColor(start_color, end_color, percent) {
@@ -124,7 +138,7 @@
             window.mymap.eachLayer(function(layer) {
                 if (layer.setStyle && layer.feature) {
                     layer.setStyle({
-                        color: getGradientColor('#00ff00', '#ff0000', covidRanking[layer.feature.properties.code])
+                        color: getGradientColor('#00ff00', '#ff0000', covidRanking[layer.feature.properties.code] || 0)
                     })
                 }
             })
