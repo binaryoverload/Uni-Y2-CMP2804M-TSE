@@ -32,8 +32,10 @@ mergedData = []
 fig, ax = plt.subplots()
 
 for key in dateFlightCount.keys():
-    #mergedData.append([dateFlightCount[key], covidCount[key]])
     plt.plot(covidCount[key], dateFlightCount[key], "bx")
+    
+    # Annotates each point with its respective date
+    # plt.annotate(key.strftime("%d/%m/%y"), xy=(covidCount[key],dateFlightCount[key]), ha='center')
 
 #plt.plot(mergedData)
 

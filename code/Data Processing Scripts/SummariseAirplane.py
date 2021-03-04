@@ -2,7 +2,7 @@ import csv
 from datetime import datetime
 import AirplaneDataClass as adc
 
-airports, flightCount = adc.processData("../../data/flight-data-filtered.csv")
+airports, flightCount = adc.processData("../../data/flight-data-filtered-international.csv")
 a = adc.AirplaneData(airports, flightCount)
 
 airportFlightCount = dict()
