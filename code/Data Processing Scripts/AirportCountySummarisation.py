@@ -3,7 +3,7 @@ import os
 
 import AirplaneDataClass as adc
 
-airports, flightCount = adc.processData("../../data/flight-data-filtered.csv")
+airports, flightCount = adc.processData("../../data/flight-data-jan-dec.csv")
 a = adc.AirplaneData(airports, flightCount)
 
 airportCountyMapping = dict()
@@ -16,11 +16,16 @@ with open("../../data/airport-counties.csv", "r") as openFile:
 
 countyData = dict()
 
+invalidAirports = dict()
+
 for key, count in a.getData().items():
     date, airport = key
 
     if not airport in airportCountyMapping:
-        print("Could not find county for airport: " + airport)
+        if not airport in invalidAirports:
+            invalidAirports[airport] = 1
+        else:
+            invalidAirports[airport] += 1
         continue
 
     county = airportCountyMapping[airport]
@@ -38,6 +43,9 @@ for key, count in a.getData().items():
         countyDict = dict()
         countyDict[dt] = count
         countyData[county] = countyDict
+
+for airport in invalidAirports:
+    print(f"Could not find county for airport \"{airport}\" {invalidAirports[airport]} times")
 
 if not os.path.exists("CountyAirport"):
     os.mkdir("CountyAirport")
