@@ -51,7 +51,7 @@ for county in counties:
     for key in dateFlightCount.keys():
         #mergedData.append([dateFlightCount[key], covidCount[key]])
         if key in covidCount:
-            plt.plot(covidCount[key], dateFlightCount[key], "bx")
+            plt.plot(dateFlightCount[key], covidCount[key], "bx")
 
     #plt.plot(mergedData)
 
