@@ -6,8 +6,12 @@
 
 __pycache__
 
-!data/flight-data-filtered.csv
-!data/covid-data.csv
+!data/flight-data-jan-oct.csv
+!data/flight-data-jan-dec.csv
+!data/flight-data-jan-oct-international.csv
+!data/flight-data-jan-dec-international.csv
+!data/covid-data-jan-oct.csv
+!data/covid-data-jan-dec.csv
 !data/airport-counties.csv
 
 venv/
