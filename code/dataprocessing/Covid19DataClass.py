@@ -18,8 +18,3 @@ class Covid19Data: #Class to load, store and retrieve covid 19 Data
             return 0
     def getLocations(self): #Function to return the list of all of the locations of the 
         return self.locations
-
-#TestCODE
-a = Covid19Data("C:/Users/benji/Downloads/utla_2021-01-04.csv")
-print(a.getLocations())
-print(a.getData("12/01/2020", "Derry City and Strabane"))
