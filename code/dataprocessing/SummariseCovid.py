@@ -8,11 +8,11 @@ with open("../../data/covid-data-jan-dec.csv", "r") as openFile:
         dateField = row.split(",")[0].split("/")
         date = datetime.date(int(dateField[2]), int(dateField[1]), int(dateField[0]))
         if date in covidDates:
-            covidDates[date] += int(row.split(",")[5])
+            covidDates[date] += int(row.split(",")[3])
         else:
-            covidDates[date] = int(row.split(",")[5])
+            covidDates[date] = int(row.split(",")[3])
 
 with open("covid-data-summarised.csv", "w") as airportCounts:
     airportCounts.write("date,count\n")
     for date, count in sorted(covidDates.items(), key=lambda item: item[0]):
-        airportCounts.write(f"{date.strftime('%Y-%m-%d')},{count}\n")
+        airportCounts.write(f"{date.strftime('%d/%m/%Y')},{count}\n")

@@ -32,4 +32,4 @@ with open("airport-flight-count.csv", "w") as airportCounts:
 with open("date-flight-count.csv", "w") as airportCounts:
     airportCounts.write("date,count\n")
     for date, count in sorted(dateFlightCount.items(), key=lambda item: item[0]):
-        airportCounts.write(f"{date.strftime('%Y-%m-%d')},{count}\n")
+        airportCounts.write(f"{date.strftime('%d/%m/%Y')},{count}\n")

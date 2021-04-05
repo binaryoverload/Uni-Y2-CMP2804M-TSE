@@ -50,8 +50,9 @@ for airport in invalidAirports:
 if not os.path.exists("CountyAirport"):
     os.mkdir("CountyAirport")
 
-for county in countyData:
-    with open("CountyAirport/" + county + ".csv", "w") as airportCounts:
-        airportCounts.write("date,count\n")
+with open("airport-county-flight-count.csv", "w") as airportCounts:
+    airportCounts.write("date,county,count\n")
+    for county in countyData:
         for date, count in sorted(countyData[county].items(), key=lambda item: item[0]):
-            airportCounts.write(f"{date.strftime('%Y-%m-%d')},{count}\n")
+            airportCounts.write(f"{date.strftime('%d/%m/%Y')},{county},{count}\n")
+        
