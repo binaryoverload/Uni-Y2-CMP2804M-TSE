@@ -2,7 +2,7 @@ import csv
 import json
 
 fieldnames = (
-    "date", "areaType", "areaCode", "areaName", "numbOfCases", "numbOfNewCases"
+    "date", "areaCode", "areaName", "numbOfCases", "numbOfNewCases"
 )
 
 with open('./covid-data-jan-dec.csv', 'r') as csvfile:
@@ -17,7 +17,6 @@ with open('./covid-data-jan-dec.csv', 'r') as csvfile:
         for row in reader:
 
             final_data[row["date"]] = {
-                "areaType": row["areaType"],
                 "areaCode": row["areaCode"],
                 "areaName": row["areaName"],
                 "numbOfCases": row["numbOfCases"],
