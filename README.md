@@ -1,6 +1,7 @@
 # Team Software Engineering Group 8 Artifact
-This Repository holds the code for the artifact for the team software engineering module at the university of lincoln for the year 2020/21.
-This artifact is a website which shows information relating to the COVID-19 pandemic. 
+
+This Repository holds the code to be used by the artifact for the team software engineering module at the University Of Lincoln for the year 2020/21.\
+This artifact is a website which shows information relating to the COVID-19 pandemic.\
 The code used in this repostiory, is the code which we used to process the data to be shown on the website.
 
 ## Using the Artifact
