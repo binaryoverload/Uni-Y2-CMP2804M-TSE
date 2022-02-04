@@ -1,0 +1,15 @@
+Report - 5%: Your report is well presented in general except a few inconsistent formatting styles. Different font colours are used and a careful proofreading should have been done to clear up some grammatic errors in writing. 4 marks
+
+Software Engineering - 10% : You consider project management carefully and have well justified the approach you use. It might have been useful here to incorporate some class diagrams to discuss your code architectures. Similarly, a clear timeline of the project or a gantt chart would be helpful. 8 marks
+
+Implementation and Artefact - 40% : The artefact is appropriately developed and important features are well implemented. It is evident that there is intensive group work involved to produce the final artefact. However, it is not clear how each team-member’s skills have been best utilised as a resource within the development of the artefact. Also, it would be helpful to showcase the artefact, even if a screenshot of it. 26marks
+
+Testing - 10%: The team had a rational approach to testing which is well described. Internal testing has been carried out across different web browsers. It might have been useful here to identify standard industry practice to compare your process to other developers. Weekly testing could also be helpful to ensure the artefact does what is expected of. 6 marks
+
+Release - 10%: Release was organized and well documented. The release plan is tied into the testing strategy, and there is clear evidence of a beta release to further test/evaluate the artefact. 8 marks
+
+Evaluation - 15% : Evaluation is good and identifies both successes and failures encountered. Feedback gathering was implemented and incorporated into development. Evidence of user feedback and response here might have been useful. 10 marks
+
+Group Work Conclusion - 10% : Group conclusion is appropriate and reflects on both group and individual performance. Action plan is briefed. One minor aspect for improvement could be that evidence be provided for individual contribution. 8 marks
+
+Overall: 4+8+26+6+8+10+8=70
